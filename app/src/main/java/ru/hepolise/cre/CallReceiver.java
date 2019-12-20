@@ -63,6 +63,7 @@ public class CallReceiver extends PhonecallReceiver {
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
                 try {
                     Settings.Global.putInt(context.getContentResolver(), "op_voice_recording_supported_by_mcc", 1);
+                    Settings.Global.putInt(context.getContentResolver(), "oneplus_screen_refresh_rate", 0);
                     if (sharedPreferences.getBoolean(MainActivity.getPrefName(), true))
                         Toast.makeText(context, "Call Recording is enabled", Toast.LENGTH_SHORT).show();
                 } catch (SecurityException e) {
@@ -109,6 +110,7 @@ public class CallReceiver extends PhonecallReceiver {
             if (buffer.equals("")) {
                 Log.d(TAG, "Attempting to try write global settings");
                 Settings.Global.putInt(contextGlobal.getApplicationContext().getContentResolver(), "op_voice_recording_supported_by_mcc", 1);
+                Settings.Global.putInt(contextGlobal.getApplicationContext().getContentResolver(), "oneplus_screen_refresh_rate", 0);
             } else {
                 Log.d(TAG, buffer);
                 Toast.makeText(contextGlobal.getApplicationContext(), "Error while executing command: " + buffer, Toast.LENGTH_LONG).show();
